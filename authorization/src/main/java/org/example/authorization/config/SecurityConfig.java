@@ -1,7 +1,7 @@
 package org.example.authorization.config;
 
-import handler.MyAuthenticationFailureHandler;
-import handler.MyAuthenticationSuccessHandler;
+import org.example.authorization.handler.MyAuthenticationFailureHandler;
+import org.example.authorization.handler.MyAuthenticationSuccessHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
