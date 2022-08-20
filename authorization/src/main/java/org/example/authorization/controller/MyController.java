@@ -11,4 +11,10 @@ public class MyController {
         System.out.println("执行welcomeHome方法");
         return "redirect:main.html";
     }
+
+    @RequestMapping("toError")
+    public String toError(){
+        System.out.println("执行welcomeHome方法");
+        return "redirect:error.html";
+    }
 }

@@ -17,12 +17,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginProcessingUrl("/login")
                 .loginPage("/login.html")
                 //登录成功之后的请求方式必须是post
-                .successForwardUrl("/toMain");
+                .successForwardUrl("/toMain")
+                .failureForwardUrl("/toError");
 
         //任何请求都需要进行认证
         http.authorizeRequests()
-                //登录页面不需要认证
+                //不需要认证的页面
                 .antMatchers("/login.html").permitAll()
+                .antMatchers("/error.html").permitAll()
                 .anyRequest().authenticated();
     }
 
