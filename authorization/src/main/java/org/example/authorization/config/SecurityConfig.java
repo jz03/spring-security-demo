@@ -35,7 +35,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //权限的简单控制
 //                .antMatchers("/userDetail.html").hasAnyAuthority("admin1")
                 //角色控制
-                .antMatchers("/userDetail.html").hasRole("abc")
+//                .antMatchers("/userDetail.html").hasRole("abc")
+                .antMatchers("/userDetail.html").hasIpAddress("127.0.0.1")
                 .anyRequest().authenticated();
     }
 
