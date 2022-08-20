@@ -22,16 +22,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginProcessingUrl("/login")
                 .loginPage("/login.html")
                 //登录成功之后的请求方式必须是post
-                .successHandler(new MyAuthenticationSuccessHandler("https://www.baidu.com/"))
-                .failureHandler(new MyAuthenticationFailureHandler("/error.html"));
-//                .successForwardUrl("/toMain")
-//                .failureForwardUrl("/toError");
+//                .successHandler(new MyAuthenticationSuccessHandler("https://www.baidu.com/"))
+//                .failureHandler(new MyAuthenticationFailureHandler("/error.html"));
+                .successForwardUrl("/toMain")
+                .failureForwardUrl("/toError");
 
         //任何请求都需要进行认证
         http.authorizeRequests()
                 //不需要认证的页面
                 .antMatchers("/login.html").permitAll()
                 .antMatchers("/error.html").permitAll()
+                .antMatchers("/userDetail.html").hasAnyAuthority("admin1")
                 .anyRequest().authenticated();
     }
 
