@@ -1,5 +1,7 @@
 package org.example.authorization.config;
 
+import handler.MyAuthenticationFailureHandler;
+import handler.MyAuthenticationSuccessHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -13,12 +15,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.formLogin()
+                //自定义登录时的参数名
+//                .usernameParameter("username123")
+//                .passwordParameter("password123")
                 //登录请求的url，否则不会走认证相关的逻辑（UserDetailsServiceImpl）
                 .loginProcessingUrl("/login")
                 .loginPage("/login.html")
                 //登录成功之后的请求方式必须是post
-                .successForwardUrl("/toMain")
-                .failureForwardUrl("/toError");
+                .successHandler(new MyAuthenticationSuccessHandler("https://www.baidu.com/"))
+                .failureHandler(new MyAuthenticationFailureHandler("/error.html"));
+//                .successForwardUrl("/toMain")
+//                .failureForwardUrl("/toError");
 
         //任何请求都需要进行认证
         http.authorizeRequests()
