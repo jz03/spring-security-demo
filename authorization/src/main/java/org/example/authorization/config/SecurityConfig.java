@@ -32,7 +32,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //不需要认证的页面
                 .antMatchers("/login.html").permitAll()
                 .antMatchers("/error.html").permitAll()
-                .antMatchers("/userDetail.html").hasAnyAuthority("admin1")
+                //权限的简单控制
+//                .antMatchers("/userDetail.html").hasAnyAuthority("admin1")
+                //角色控制
+                .antMatchers("/userDetail.html").hasRole("abc")
                 .anyRequest().authenticated();
     }
 
