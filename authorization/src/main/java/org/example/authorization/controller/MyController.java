@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class MyController {
 
-    @RequestMapping("main")
+    @RequestMapping("toMain")
     public String welcomeHome(){
-        System.out.println("执行登录方法");
+        System.out.println("执行welcomeHome方法");
         return "redirect:main.html";
     }
 }
