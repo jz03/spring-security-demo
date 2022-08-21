@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MyController {
 
 //    @Secured("ROLE_abc")
-    @PreAuthorize("hasRole('abc')")
+    //ROLE_前缀要不要都可以
+    @PreAuthorize("hasRole('ROLE_abc')")
     @RequestMapping("toMain")
     public String welcomeHome(){
         System.out.println("执行welcomeHome方法");
