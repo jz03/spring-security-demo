@@ -35,6 +35,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         //前缀时ROLE表示的是角色，在使用的时候需要去掉前缀
         return new User(userName,psencode,
                 AuthorityUtils
-                        .commaSeparatedStringToAuthorityList("admin,normal,ROLE_abc"));
+                        .commaSeparatedStringToAuthorityList("admin,normal,ROLE_abc,/main.html"));
     }
 }
