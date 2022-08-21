@@ -1,11 +1,13 @@
 package org.example.authorization.controller;
 
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class MyController {
 
+    @Secured("ROLE_abc")
     @RequestMapping("toMain")
     public String welcomeHome(){
         System.out.println("执行welcomeHome方法");

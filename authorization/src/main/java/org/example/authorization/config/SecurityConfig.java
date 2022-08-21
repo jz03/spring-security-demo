@@ -4,6 +4,7 @@ import org.example.authorization.handler.MyAuthenticationFailureHandler;
 import org.example.authorization.handler.MyAuthenticationSuccessHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -36,9 +37,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .antMatchers("/userDetail.html").hasAnyAuthority("admin1")
                 //角色控制
 //                .antMatchers("/userDetail.html").hasRole("abc")
-                .antMatchers("/userDetail.html").hasIpAddress("127.0.0.1")
+                //基于ip的控制
+//                .antMatchers("/userDetail.html").hasIpAddress("127.0.0.1")
                 .anyRequest().authenticated();
     }
+
+//    @Bean
+//    public AuthenticationManager authenticationManager() throws Exception {
+//        return super.authenticationManager();
+//    }
 
     @Bean
     public PasswordEncoder passwordEncoder(){
