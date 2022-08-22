@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
  * 密码示例：Using generated security password: 20577576-510c-46ed-997d-4a7d9691df9f
  *
  */
-@Service
+@Service("userDetailsServiceImpl")
 public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     private PasswordEncoder passwordEncoder;
