@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Collection;
 
+/**
+ * 自定义授权
+ */
 @Service
 public class MyServiceImpl implements MyService {
     @Override
