@@ -47,7 +47,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .secret(passwordEncoder.encode("123123"))
                 .accessTokenValiditySeconds(3600)
                 .redirectUris("https://www.bilibili.com/")
-                .scopes("all").authorizedGrantTypes("password");
+                .scopes("all").authorizedGrantTypes("password","authorization_code","refresh_token");
     }
 
     @Override
