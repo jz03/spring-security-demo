@@ -47,8 +47,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         clients.inMemory().withClient("client001")
                 .secret(passwordEncoder.encode("123123"))
                 .accessTokenValiditySeconds(3600)
-//                .redirectUris("https://localhost:8081/login")
-                .scopes("all").authorizedGrantTypes("password","refresh_token");
+                .redirectUris("http://localhost:8081/login")
+                .scopes("all").authorizedGrantTypes("authorization_code","password","refresh_token");
     }
 
     @Override
