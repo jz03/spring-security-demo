@@ -51,6 +51,11 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .scopes("all").authorizedGrantTypes("authorization_code","password","refresh_token");
     }
 
+    /**
+     * oauth2过滤链的配置
+     * @param endpoints
+     * @throws Exception
+     */
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();

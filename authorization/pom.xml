@@ -11,5 +11,12 @@
 
     <artifactId>authorization</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-oauth2-authorization-server</artifactId>
+            <version>0.3.1</version>
+        </dependency>
 
+    </dependencies>
 </project>
