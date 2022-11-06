@@ -35,8 +35,8 @@ import java.util.UUID;
 @Configuration
 public class AuthorizationServerConfig {
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+//    @Autowired
+//    private PasswordEncoder passwordEncoder;
 
     @Bean
     public SecurityFilterChain authorizationServerSecurityFilterChain(HttpSecurity http) throws Exception {
@@ -50,17 +50,18 @@ public class AuthorizationServerConfig {
         RegisteredClient loginClient = RegisteredClient.withId(UUID.randomUUID().toString())
                 .clientId("login-client")
                 .clientSecret("{noop}openid-connect")
-                .clientAuthenticationMethod(ClientAuthenticationMethod.PRIVATE_KEY_JWT)
+                .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
                 .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
                 .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
                 .redirectUri("http://127.0.0.1:8080/login/oauth2/code/login-client")
-                .redirectUri("https://www.baidu.com/")
+                .redirectUri("http://127.0.0.1:8080/authorized")
+                .scope(OidcScopes.OPENID)
                 .scope(OidcScopes.PROFILE)
                 .clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())
                 .build();
         RegisteredClient registeredClient = RegisteredClient.withId(UUID.randomUUID().toString())
                 .clientId("messaging-client")
-                .clientSecret(passwordEncoder.encode("secret"))
+                .clientSecret("{noop}secret")
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
                 .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
                 .scope("message:read")
